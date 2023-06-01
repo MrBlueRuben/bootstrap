@@ -1,4 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Montserrat:wght@200;400;700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Montserrat:wght@200;300;400;700&display=swap');
 
  :root {
    --color-body: #ede2f1;
@@ -7,21 +7,25 @@
     --color-primary: #280a63;
     --color-brand2: #deff58;
     --sidbar-width: 240px;
-    --font-primary: "League Gothic";
-    --font-heading: "Montserrat";
+    --font-primary: "Montserrat";
 }
 
 body {
     background-color: var(--color-body);
     color: var(--color-body);
-    font-family: var(--font-base), sans-serif;
+    font-family: var(--font-primary), sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6, p{
     color: black;
     font-weight: 700;
 }
-
+h2{
+  font-weight: 400;
+}
+.bi{
+  color: var(--color-highlight)
+}
 a {
     text-decoration: none;
     color: var(--color-body);
