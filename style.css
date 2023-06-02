@@ -12,7 +12,7 @@
 
 body {
     background-color: var(--color-body);
-    color: var(--color-body);
+    /* color: var(--color-body); */
     font-family: var(--font-primary), sans-serif;
 }
 
@@ -23,12 +23,25 @@ h1,h2,h3,h4,h5,h6, p{
 h2{
   font-weight: 400;
 }
-.bi{
-  color: var(--color-highlight)
+.bi, .skills{
+  color: var(--color-highlight);
+  font-size: x-large;
+}
+.skills{
+  color: var(--color-highlight);
+  font-size: 2.5rem;
+  padding-right: 20px;
+}
+.ini_contact{
+  display: flex;
+}
+.ini_contact p{
+  font-weight: 300;
+  align-items: baseline;
 }
 a {
     text-decoration: none;
-    color: var(--color-body);
+    /* color: var(--color-body); */
     transition: all 0.4s ease;
 }
 
