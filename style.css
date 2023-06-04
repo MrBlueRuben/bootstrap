@@ -37,6 +37,7 @@ h2{
   font-size: 2.5rem;
   padding-right: 20px;
   animation: fadeIn 3s ease-in-out;
+  text-align: center;
 }
 @keyframes fadeIn {
   0% {
@@ -76,7 +77,14 @@ a:hover {
 img {
     width: 100%;
 }
-
+.text-tech{
+  display: block;
+  text-align: center;
+  font-size: 1.2rem;
+  padding-top: 5px;
+  font-family: var(--font-primary), sans-serif;
+  font-weight: 300;
+}
 .text-highlight {
     color: var(--color-highlight);
 }
