@@ -251,3 +251,8 @@ Articles
   width: 100px;
   display: inline-block;
 }
+.link-to{
+  color: var(--color-heading);
+  transition: all 0.4s ease;
+  display: block;
+}
