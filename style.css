@@ -257,7 +257,8 @@ Articles
 
 .link-to-projects{
   color: var(--color-heading);
-  transition: all 0.4s ease;
+  /* transition: all 0.4s ease; */
   display: block;
   align-items: center;
+
 }
