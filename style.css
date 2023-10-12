@@ -34,6 +34,7 @@ h2{
 .text-300{
   font-weight: 300;
 }
+/*
 .bi {
   color: var(--color-highlight);
   font-size: 2.5rem;
@@ -41,7 +42,7 @@ h2{
 }
 .bi:hover{
   color: var(--color-brand2);
-}
+}*/
 .skills{
   color: var(--color-highlight);
   font-size: 2.5rem;
@@ -58,8 +59,13 @@ h2{
     opacity: 1;
     transform: translateY(0);
   }
-
 }
+.SVG-logos{
+  width: 40px;
+  margin: 10px;
+  display: inline-block;
+}
+
 .ini_contact{
   font-weight: 400;
   padding-top: 20px;
@@ -123,7 +129,7 @@ a:hover {
 .nav-2items{
   display: flex;
   flex-direction: row;
-  justify-content: space-araound;
+  justify-content: space-around;
   align-items: center;
 }
 .nav-2items i{
