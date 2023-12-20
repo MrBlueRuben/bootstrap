@@ -9,6 +9,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="/assets/favicon.ico">
+      <script>
+        function sendData () {
+          // (A) GET FORM DATA
+          var data = new FormData(document.getElementById("demo"));
+          // data.append("KEY", "VALUE");
+    
+          // (B) INIT FETCH POST
+          fetch("https://l3hj07gwf1.execute-api.us-east-1.amazonaws.com/prod/contact", {
+            method: "POST",
+            body: data
+          })
+    
+          // (C) RETURN SERVER RESPONSE AS TEXT
+          .then(res => {
+            if (res.status != 200) { throw new Error("Bad Server Response"); }
+            return res.text();
+          })
+    
+          // (D) SERVER RESPONSE
+          .then(res => console.log(res))
+    
+          // (E) HANDLE ERRORS - OPTIONAL
+          .catch(err => console.error(err));
+    
+          // (F) PREVENT FORM SUBMIT
+          return false;
+        }
+      </script>
   </head>
 
   <body>
@@ -220,7 +248,7 @@
                       </h1>
                   </div>
                   <div class="col-lg-8">
-                      <form action="#" class="row g-lg-3 gy-3">
+                      <!--<form action="#" class="row g-lg-3 gy-3">
                           <div class="form-group col-md-6">
                               <input type="text" class="form-control" placeholder="Enter your name">
                           </div>
@@ -236,7 +264,12 @@
                           <div class="form-group col-12 d-grid">
                               <button type="submit" class="btn btn-submit">Contact me</button>
                           </div>
-                      </form>
+                      </form>-->
+                    <form onsubmit="return sendData()" id="demo">
+                      <input type="text" name="name" value="Jon Doe" required>
+                      <input type="email" name="email" value="jon@doe.com" required>
+                      <input type="submit" value="Go!">
+                    </form>
                   </div>
               </div>
           </div>
