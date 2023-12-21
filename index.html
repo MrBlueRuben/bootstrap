@@ -9,34 +9,65 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="/assets/favicon.ico">
-      <script>
-        function sendData () {
-          // (A) GET FORM DATA
-          var data = new FormData(document.getElementById("demo"));
-          // data.append("KEY", "VALUE");
-    
-          // (B) INIT FETCH POST
-          fetch("https://l3hj07gwf1.execute-api.us-east-1.amazonaws.com/prod/contact", {
-            method: "POST",
-            body: data
-          })
-    
-          // (C) RETURN SERVER RESPONSE AS TEXT
-          .then(res => {
-            if (res.status != 200) { throw new Error("Bad Server Response"); }
-            return res.text();
-          })
-    
-          // (D) SERVER RESPONSE
-          .then(res => console.log(res))
-    
-          // (E) HANDLE ERRORS - OPTIONAL
-          .catch(err => console.error(err));
-    
-          // (F) PREVENT FORM SUBMIT
-          return false;
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Function to handle form submission
+        function handleSubmit(event) {
+          event.preventDefault(); // Prevents the default form submission
+   
+          // Get form data
+          const name = document.querySelector('input[name="name"]').value;
+          const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
+          const email = document.querySelector('input[name="email"]').value;
+          const message = document.querySelector('.message-box').value;
+   
+          // Prepare data for POST request
+          const formData = {
+            name: name,
+            phoneNumber: phoneNumber,
+            email: email,
+            message: message
+          };
+   
+          // URL to your API Gateway endpoint
+          const apiUrl = 'https://l3hj07gwf1.execute-api.us-east-1.amazonaws.com/prod/contact';
+   
+          // Fetch options
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          };
+   
+          // Fetch data
+          fetch(apiUrl, options)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              // Handle successful response
+              console.log('Data sent successfully:', data);
+              // You can add additional logic here if needed
+            })
+            .catch(error => {
+              // Handle error
+              console.error('Error sending data:', error.message);
+              // You can add additional error handling logic here if needed
+            });
         }
-      </script>
+   
+        // Get the form element
+        const form = document.querySelector('form');
+   
+        // Add event listener for form submission
+        form.addEventListener('submit', handleSubmit);
+      });
+    </script>
   </head>
 
   <body>
@@ -248,28 +279,28 @@
                       </h1>
                   </div>
                   <div class="col-lg-8">
-                      <!--<form action="#" class="row g-lg-3 gy-3">
+                      <form action="#" class="row g-lg-3 gy-3">
                           <div class="form-group col-md-6">
-                              <input type="text" class="form-control" placeholder="Enter your name">
+                              <input type="text" name="name" class="form-control" placeholder="Enter your name">
                           </div>
                           <div class="form-group col-md-6">
-                              <input type="email" class="form-control" placeholder="Enter your email">
+                              <input type="email" name="email" class="form-control" placeholder="Enter your email">
                           </div>
                           <div class="form-group col-12">
-                              <input type="text" class="form-control" placeholder="Enter subject">
+                              <input type="text" name="subject" class="form-control" placeholder="Enter subject">
                           </div>
                           <div class="form-group col-12">
-                              <textarea name="" rows="4" class="form-control" placeholder="Enter your message"></textarea>
+                              <textarea type="text" name="message" rows="4" class="form-control" placeholder="Enter your message"></textarea>
                           </div>
                           <div class="form-group col-12 d-grid">
                               <button type="submit" class="btn btn-submit">Contact me</button>
                           </div>
-                      </form>-->
-                    <form onsubmit="return sendData()" id="demo">
+                      </form>
+                    <!--<form onsubmit="return sendData()" id="demo">
                       <input type="text" name="name" value="Jon Doe" required>
                       <input type="email" name="email" value="jon@doe.com" required>
                       <input type="submit" value="Go!">
-                    </form>
+                    </form>-->
                   </div>
               </div>
           </div>
