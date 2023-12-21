@@ -17,15 +17,15 @@
    
           // Get form data
           const name = document.querySelector('input[name="name"]').value;
-          const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
           const email = document.querySelector('input[name="email"]').value;
+          const subject = document.querySelector('input[name="subject"]').value;
           const message = document.querySelector('.message-box').value;
    
           // Prepare data for POST request
           const formData = {
             name: name,
-            phoneNumber: phoneNumber,
             email: email,
+            subject: subject,
             message: message
           };
    
